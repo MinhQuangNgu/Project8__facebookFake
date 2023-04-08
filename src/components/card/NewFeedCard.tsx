@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 const NewFeedCard: React.FC = () => {
 	const [react, setReact] = useState<string>("");
+	const [comment, setComment] = useState<string>("");
+	const [emoji, setEmoji] = useState<boolean>(false);
+
+	const contentRef = useRef<HTMLDivElement>(null);
 	return (
 		<div className="newfeed__card">
-			<div className="newfeed__card__head">
+			<div
+				onClick={() => {
+					setEmoji(false);
+				}}
+				className="newfeed__card__head"
+			>
 				<div className="newfeed__card__wrap">
 					<div className="newfeed__card__image">
 						<img
@@ -24,7 +35,12 @@ const NewFeedCard: React.FC = () => {
 					<div>&times;</div>
 				</div>
 			</div>
-			<div className="newfeed__card__body">
+			<div
+				onClick={() => {
+					setEmoji(false);
+				}}
+				className="newfeed__card__body"
+			>
 				<div className="newfeed__card__body__content">
 					Một mình anh chấp hết :))
 				</div>
@@ -35,7 +51,12 @@ const NewFeedCard: React.FC = () => {
 					/>
 				</div>
 			</div>
-			<div className="newfeed__card__react">
+			<div
+				onClick={() => {
+					setEmoji(false);
+				}}
+				className="newfeed__card__react"
+			>
 				<div style={{ display: "flex", alignItems: "center" }}>
 					😁👍
 					<div className="newfeed_react">20k</div>
@@ -44,7 +65,12 @@ const NewFeedCard: React.FC = () => {
 					<div>322 bình luận</div>
 				</div>
 			</div>
-			<div className="newfeed__card__comment__wrap">
+			<div
+				onClick={() => {
+					setEmoji(false);
+				}}
+				className="newfeed__card__comment__wrap"
+			>
 				<div
 					style={
 						react
@@ -130,12 +156,71 @@ const NewFeedCard: React.FC = () => {
 						className="newfeed__card__button"
 					></div>
 				</div>
-				<div className="newfeed__card__comment__wrap__items">
+				<div
+					onClick={() => {
+						setEmoji(false);
+					}}
+					className="newfeed__card__comment__wrap__items"
+				>
 					<i
 						style={{ marginRight: "0.5rem" }}
 						className="fa-regular fa-comment"
 					></i>{" "}
 					Bình luận
+				</div>
+			</div>
+			<div className="newfeed__card__comment__form">
+				<div
+					onClick={() => {
+						setEmoji(false);
+					}}
+					className="newfeed__card__comment__form-img"
+				>
+					<img
+						src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-4-2.jpg"
+						alt="Ảnh"
+					/>
+				</div>
+				<div className="newfeed__card__comment__form-input">
+					<div
+						onInput={(e) => {
+							const value = e.target as HTMLElement;
+							setComment(value.innerHTML);
+						}}
+						onClick={() => {
+							setEmoji(false);
+						}}
+						ref={contentRef}
+						className="newfeed__card__input_main"
+						contentEditable={true}
+					></div>
+					<div
+						onClick={() => {
+							setEmoji(!emoji);
+						}}
+						className="newfeed__add__icons"
+					>
+						🙂
+					</div>
+					<div className="newfeed__more"></div>
+					{!comment && (
+						<div className="newfeed__more__abs">Viết bình luận...</div>
+					)}
+					{emoji && (
+						<div className="picker__newfeed">
+							<Picker
+								data={data}
+								onEmojiSelect={(e: any) => {
+									const content = contentRef.current;
+									if (!content) {
+										return;
+									}
+									content.innerHTML = comment + e?.native;
+									setComment(content.innerHTML);
+								}}
+							/>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>

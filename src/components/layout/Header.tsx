@@ -4,9 +4,7 @@ import Hippo from "../../image/hippo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 const Header: React.FC = () => {
 	const navigate = useNavigate();
-
 	const { pathname } = useLocation();
-	console.log(pathname);
 	return (
 		<div className="header padding">
 			<div className="header__brand">
