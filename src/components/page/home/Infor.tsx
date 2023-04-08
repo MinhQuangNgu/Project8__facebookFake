@@ -18,7 +18,7 @@ const Infor: React.FC = () => {
 							<div className="home__infor__items__name">Minh Quang</div>
 						</div>
 					</Link>
-					<Link className="Link" to="/">
+					<Link className="Link" to="/friends">
 						<div className="home__infor__items">
 							<div className="home__infor__items__image">
 								<i className="fa-solid fa-user-group"></i>
@@ -26,7 +26,7 @@ const Infor: React.FC = () => {
 							<div className="home__infor__items__name">Tìm bạn bè</div>
 						</div>
 					</Link>
-					<Link className="Link" to="/">
+					<Link className="Link" to="/watch">
 						<div className="home__infor__items">
 							<div className="home__infor__items__image">
 								<i className="fa-solid fa-tv"></i>
@@ -34,7 +34,7 @@ const Infor: React.FC = () => {
 							<div className="home__infor__items__name">Watch</div>
 						</div>
 					</Link>
-					<Link className="Link" to="/">
+					<Link className="Link" to="/quiz">
 						<div className="home__infor__items">
 							<div className="home__infor__items__image">
 								<i className="fa-solid fa-question"></i>
@@ -42,7 +42,7 @@ const Infor: React.FC = () => {
 							<div className="home__infor__items__name">Làm quizz</div>
 						</div>
 					</Link>
-					<Link className="Link" to="/">
+					<Link className="Link" to="/draw">
 						<div
 							style={{ marginBottom: "1rem" }}
 							className="home__infor__items"
