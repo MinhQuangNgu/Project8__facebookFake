@@ -37,43 +37,62 @@ const Newfeeds: React.FC = () => {
 					<div className="newfeed-create__cancel">
 						<div>&times;</div>
 					</div>
-					<div className="newfeed-create__input">
-						<div
-							onInput={(e) => {
-								const value = e.target as HTMLElement;
-								setChat(value.innerHTML);
-							}}
-							ref={contentRef}
-							contentEditable={true}
-						></div>
-						<div>
-							<i
-								onClick={() => {
-									setEmoji(!emoji);
+					<div className="newfeed-create__detail">
+						<div className="newfeed-create__input">
+							<div
+								onInput={(e) => {
+									const value = e.target as HTMLElement;
+									setChat(value.innerHTML);
 								}}
-								className="fa-regular fa-face-smile"
-							></i>
-						</div>
-						{emoji && (
-							<div className="picker">
-								<Picker
-									data={data}
-									onEmojiSelect={(e: any) => {
-										const content = contentRef.current;
-										if (!content) {
-											return;
-										}
-										content.innerHTML = chat + e?.native;
-										setChat(content.innerHTML);
+								onClick={() => {
+									setEmoji(false);
+								}}
+								ref={contentRef}
+								contentEditable={true}
+							></div>
+							<div>
+								<i
+									onClick={() => {
+										setEmoji(!emoji);
 									}}
-								/>
+									className="fa-regular fa-face-smile"
+								></i>
 							</div>
-						)}
-						{!chat && (
-							<div className="newfeed-create-msg">
-								Quang ơi, bạn đang nghĩ gì thế?
+							{emoji && (
+								<div className="picker">
+									<Picker
+										data={data}
+										onEmojiSelect={(e: any) => {
+											const content = contentRef.current;
+											if (!content) {
+												return;
+											}
+											content.innerHTML = chat + e?.native;
+											setChat(content.innerHTML);
+										}}
+									/>
+								</div>
+							)}
+							{!chat && (
+								<div className="newfeed-create-msg">
+									Quang ơi, bạn đang nghĩ gì thế?
+								</div>
+							)}
+						</div>
+						<div className="newfeed-create__imgVideo">
+							<div>
+								<input hidden id="newFeed" name="feed" type="file" />
+								<label htmlFor="newFeed">
+									<div>
+										<i className="fa-regular fa-square-plus"></i>
+									</div>
+									<div>Thêm ảnh/video</div>
+								</label>
 							</div>
-						)}
+						</div>
+					</div>
+					<div className="newfeed-create__button">
+						<button>Đăng</button>
 					</div>
 				</div>
 			</div>

@@ -223,7 +223,7 @@
 	transform: translate(-50%, -50%);
 	z-index: 1000;
 	width: 30%;
-	height: 80%;
+	height: 65%;
 	background-color: white;
 	box-shadow: 0 0 0.6rem 0rem rgba(0, 0, 0, 0.4);
 	border-radius: 1rem;
@@ -263,7 +263,7 @@
 .newfeed-create__input {
 	width: 100%;
 	margin-top: 1rem;
-	position: absolute;
+	position: relative;
 	padding: 0 1rem;
 	display: flex;
 	align-items: center;
@@ -286,7 +286,7 @@
 .newfeed-create-msg {
 	position: absolute;
 	top: 0.3rem;
-	font-size: 1.4rem;
+	font-size: 1.6rem;
 	color: rgba(0, 0, 0, 0.7);
 	z-index: 100;
 }
@@ -295,4 +295,77 @@
 	z-index: 300;
 	right: -30%;
 	top: 100%;
+}
+.newfeed-create__imgVideo {
+	margin-top: 2rem;
+	width: 100%;
+	height: 40vh;
+	border-radius: 1rem;
+	padding: 0 1rem;
+	& > div {
+		width: 100%;
+		height: 100%;
+		border: 0.1rem solid rgba(0, 0, 0, 0.4);
+		border-radius: 1rem;
+		padding: 1rem;
+		display: flex;
+		& > label {
+			flex: 1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			background-color: rgba(0, 0, 0, 0.05);
+			& > div {
+				font-size: 1.8rem;
+				font-weight: 500;
+			}
+			& > div:first-child {
+				width: 5rem;
+				height: 5rem;
+				background-color: rgba(0, 0, 0, 0.1);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 2.8rem;
+				margin-bottom: 0.5rem;
+			}
+			cursor: pointer;
+		}
+	}
+}
+.newfeed-create__detail {
+	width: 100%;
+	height: 50vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	&::-webkit-scrollbar {
+		width: 1rem;
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--light_secondary_color);
+	}
+	&:hover::-webkit-scrollbar-thumb {
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+}
+.newfeed-create__button {
+	display: flex;
+	justify-content: center;
+	margin-top: 0.5rem;
+	padding: 0 1.5rem;
+	& > button {
+		width: 100%;
+		height: 3.5rem;
+		outline: none;
+		background-color: var(--dark_primary_color);
+		color: white;
+		border: none;
+		border-radius: 0.4rem;
+		cursor: pointer;
+		&:hover {
+			transform: scale(0.95);
+		}
+	}
 }
