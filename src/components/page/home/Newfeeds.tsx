@@ -1,11 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import "./style.scss";
-import data from "@emoji-mart/data";
-import Picker from "@emoji-mart/react";
+import CreateNewFeed from "../common/CreateNewFeed";
+import NewFeedCard from "../../card/NewFeedCard";
 const Newfeeds: React.FC = () => {
-	const [chat, setChat] = useState<string>("");
-	const [emoji, setEmoji] = useState<boolean>(false);
-	const contentRef = useRef<HTMLDivElement>(null);
+	const [createNewFeed, setCreateNewFeed] = useState<boolean>(false);
 	return (
 		<div className="home__newfeeds">
 			<div className="home__newfeeds__createOne">
@@ -16,7 +14,12 @@ const Newfeeds: React.FC = () => {
 							alt="Ảnh"
 						/>
 					</div>
-					<div className="home__newfeed__input">
+					<div
+						onClick={() => {
+							setCreateNewFeed(true);
+						}}
+						className="home__newfeed__input"
+					>
 						Quang ơi, bạn đang nghĩ gì?
 					</div>
 				</div>
@@ -25,78 +28,28 @@ const Newfeeds: React.FC = () => {
 						<i className="fa-solid fa-video"></i>
 						Video trực tuyến
 					</div>
-					<div className="home__newfeed__items">
+					<div
+						onClick={() => {
+							setCreateNewFeed(true);
+						}}
+						className="home__newfeed__items"
+					>
 						<i style={{ color: "#45BD62" }} className="fa-solid fa-image"></i>
 						Ảnh, video
 					</div>
 				</div>
 			</div>
-			<div className="newfeed-create">
-				<div className="newfeed-create__wrap">
-					<div className="newfeed-create__head">Tạo bài viết</div>
-					<div className="newfeed-create__cancel">
-						<div>&times;</div>
-					</div>
-					<div className="newfeed-create__detail">
-						<div className="newfeed-create__input">
-							<div
-								onInput={(e) => {
-									const value = e.target as HTMLElement;
-									setChat(value.innerHTML);
-								}}
-								onClick={() => {
-									setEmoji(false);
-								}}
-								ref={contentRef}
-								contentEditable={true}
-							></div>
-							<div>
-								<i
-									onClick={() => {
-										setEmoji(!emoji);
-									}}
-									className="fa-regular fa-face-smile"
-								></i>
-							</div>
-							{emoji && (
-								<div className="picker">
-									<Picker
-										data={data}
-										onEmojiSelect={(e: any) => {
-											const content = contentRef.current;
-											if (!content) {
-												return;
-											}
-											content.innerHTML = chat + e?.native;
-											setChat(content.innerHTML);
-										}}
-									/>
-								</div>
-							)}
-							{!chat && (
-								<div className="newfeed-create-msg">
-									Quang ơi, bạn đang nghĩ gì thế?
-								</div>
-							)}
-						</div>
-						<div className="newfeed-create__imgVideo">
-							<div>
-								<input hidden id="newFeed" name="feed" type="file" />
-								<label htmlFor="newFeed">
-									<div>
-										<i className="fa-regular fa-square-plus"></i>
-									</div>
-									<div>Thêm ảnh/video</div>
-								</label>
-							</div>
-						</div>
-					</div>
-					<div className="newfeed-create__button">
-						<button>Đăng</button>
-					</div>
-				</div>
-			</div>
-			<div className="newfeed-create-abs"></div>
+			{createNewFeed && <CreateNewFeed setCreateNewFeed={setCreateNewFeed} />}
+			{createNewFeed && (
+				<div
+					onClick={() => {
+						setCreateNewFeed(false);
+					}}
+					className="newfeed-create-abs"
+				></div>
+			)}
+			<NewFeedCard />
+			<NewFeedCard />
 		</div>
 	);
 };

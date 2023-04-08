@@ -148,7 +148,7 @@
 	width: 100%;
 	height: 12rem;
 	background-color: white;
-	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.1);
 	border-radius: 1rem;
 	padding: 1rem;
 }
@@ -266,7 +266,6 @@
 	position: relative;
 	padding: 0 1rem;
 	display: flex;
-	align-items: center;
 	& > div:first-child {
 		min-width: 93%;
 		min-height: 3rem;
@@ -294,7 +293,7 @@
 	position: absolute;
 	z-index: 300;
 	right: -30%;
-	top: 100%;
+	top: 22%;
 }
 .newfeed-create__imgVideo {
 	margin-top: 2rem;
