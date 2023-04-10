@@ -10,9 +10,159 @@ const Friends: React.FC = () => {
 					setTouch("friends");
 				}
 			}}
-			className="header__infor"
+			className="header__infor friends"
 		>
-			Friends
+			<div className="friends__wrap">
+				<div className="friends__wrap__1">
+					<div className="friends__header">Người liên hệ</div>
+					<div className="friends__body">
+						<div className="friends__body__items">
+							<div className="friends__body__items__image">
+								<img
+									src="https://anhcuoiviet.vn/wp-content/uploads/2022/11/background-dep-0.jpg"
+									alt="Ảnh"
+								/>
+								<div className="friends__body__items__active"></div>
+							</div>
+							<div className="friends__body__items__name">
+								Nguyễn Minh Quang
+							</div>
+						</div>
+						<div className="friends__body__items">
+							<div className="friends__body__items__image">
+								<img
+									src="https://anhcuoiviet.vn/wp-content/uploads/2022/11/background-dep-0.jpg"
+									alt="Ảnh"
+								/>
+								<div className="friends__body__items__active"></div>
+							</div>
+							<div className="friends__body__items__name">
+								Nguyễn Minh Quang
+							</div>
+						</div>
+						<div className="friends__body__items">
+							<div className="friends__body__items__image">
+								<img
+									src="https://anhcuoiviet.vn/wp-content/uploads/2022/11/background-dep-0.jpg"
+									alt="Ảnh"
+								/>
+								<div className="friends__body__items__active"></div>
+							</div>
+							<div className="friends__body__items__name">
+								Nguyễn Minh Quang
+							</div>
+						</div>
+						<div className="friends__body__items">
+							<div className="friends__body__items__image">
+								<img
+									src="https://anhcuoiviet.vn/wp-content/uploads/2022/11/background-dep-0.jpg"
+									alt="Ảnh"
+								/>
+								<div className="friends__body__items__active"></div>
+							</div>
+							<div className="friends__body__items__name">
+								Nguyễn Minh Quang
+							</div>
+						</div>
+						<div className="friends__body__items">
+							<div className="friends__body__items__image">
+								<img
+									src="https://anhcuoiviet.vn/wp-content/uploads/2022/11/background-dep-0.jpg"
+									alt="Ảnh"
+								/>
+								<div className="friends__body__items__active"></div>
+							</div>
+							<div className="friends__body__items__name">
+								Nguyễn Minh Quang
+							</div>
+						</div>
+						<div className="friends__body__items">
+							<div className="friends__body__items__image">
+								<img
+									src="https://anhcuoiviet.vn/wp-content/uploads/2022/11/background-dep-0.jpg"
+									alt="Ảnh"
+								/>
+								<div className="friends__body__items__active"></div>
+							</div>
+							<div className="friends__body__items__name">
+								Nguyễn Minh Quang
+							</div>
+						</div>
+						<div className="friends__body__items">
+							<div className="friends__body__items__image">
+								<img
+									src="https://anhcuoiviet.vn/wp-content/uploads/2022/11/background-dep-0.jpg"
+									alt="Ảnh"
+								/>
+								<div className="friends__body__items__active"></div>
+							</div>
+							<div className="friends__body__items__name">
+								Nguyễn Minh Quang
+							</div>
+						</div>
+						<div className="friends__body__items">
+							<div className="friends__body__items__image">
+								<img
+									src="https://anhcuoiviet.vn/wp-content/uploads/2022/11/background-dep-0.jpg"
+									alt="Ảnh"
+								/>
+								<div className="friends__body__items__active"></div>
+							</div>
+							<div className="friends__body__items__name">
+								Nguyễn Minh Quang
+							</div>
+						</div>
+						<div className="friends__body__items">
+							<div className="friends__body__items__image">
+								<img
+									src="https://anhcuoiviet.vn/wp-content/uploads/2022/11/background-dep-0.jpg"
+									alt="Ảnh"
+								/>
+								<div className="friends__body__items__active"></div>
+							</div>
+							<div className="friends__body__items__name">
+								Nguyễn Minh Quang
+							</div>
+						</div>
+						<div className="friends__body__items">
+							<div className="friends__body__items__image">
+								<img
+									src="https://anhcuoiviet.vn/wp-content/uploads/2022/11/background-dep-0.jpg"
+									alt="Ảnh"
+								/>
+								<div className="friends__body__items__active"></div>
+							</div>
+							<div className="friends__body__items__name">
+								Nguyễn Minh Quang
+							</div>
+						</div>
+						<div className="friends__body__items">
+							<div className="friends__body__items__image">
+								<img
+									src="https://anhcuoiviet.vn/wp-content/uploads/2022/11/background-dep-0.jpg"
+									alt="Ảnh"
+								/>
+								<div className="friends__body__items__active"></div>
+							</div>
+							<div className="friends__body__items__name">
+								Nguyễn Minh Quang
+							</div>
+						</div>
+						<div className="friends__body__items">
+							<div className="friends__body__items__image">
+								<img
+									src="https://anhcuoiviet.vn/wp-content/uploads/2022/11/background-dep-0.jpg"
+									alt="Ảnh"
+								/>
+								<div className="friends__body__items__active"></div>
+							</div>
+							<div className="friends__body__items__name">
+								Nguyễn Minh Quang
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };

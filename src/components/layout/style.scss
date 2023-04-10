@@ -14,14 +14,14 @@
 	z-index: 1000;
 }
 .header__navbar {
-	width: 60%;
+	width: var(--newfeed);
 	height: 100%;
 	padding: 0 10%;
 	display: flex;
 }
 .header__brand,
 .header__infor {
-	width: 20%;
+	width: var(--friend_infor);
 }
 .header__brand__wrap {
 	width: 3.7rem;

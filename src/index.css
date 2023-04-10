@@ -19,6 +19,8 @@ body {
 	--dark_background_color: #222222;
 	--dark_text_color: #f8f9fa;
 	--orange_color: #ff8a08;
+	--newfeed: 62%;
+	--friend_infor: 24%;
 }
 
 code {
