@@ -203,7 +203,7 @@ const NewFeedCard: React.FC<props> = ({ touchCard, setTouchCard, index }) => {
 					></div>
 					<div
 						onClick={() => {
-							if (touchCard === index) {
+							if (touchCard === index && type === "emoji") {
 								setTouchCard(-1);
 								setType("");
 							} else {
@@ -237,7 +237,13 @@ const NewFeedCard: React.FC<props> = ({ touchCard, setTouchCard, index }) => {
 				</div>
 			</div>
 			<div className="newfeed__comment__card">
-				<CommentCard />
+				<CommentCard
+					touchCard={touchCard}
+					setTouchCard={setTouchCard}
+					index={0}
+					type={type}
+					setType={setType}
+				/>
 			</div>
 		</div>
 	);

@@ -263,7 +263,9 @@
 .commentCard__bars {
 	width: 3rem;
 	height: 3rem;
-	display: none;
+	display: flex;
+	opacity: 0;
+	position: relative;
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
@@ -273,7 +275,7 @@
 	}
 }
 .commentCard:hover .commentCard__bars {
-	display: flex;
+	opacity: 1;
 }
 .commentCared__button {
 	display: flex;
@@ -291,5 +293,37 @@
 	& > div:first-child:hover,
 	& > div:nth-child(2):hover {
 		text-decoration: underline;
+	}
+}
+.commentCard__bars__wrap {
+	position: absolute;
+	top: 120%;
+	left: -3.5rem;
+	min-width: 10rem;
+	background-color: white;
+	box-shadow: 0 0 1.4rem 0.05rem rgba(0, 0, 0, 0.7);
+	border-radius: 1rem;
+	padding: 0.5rem 1rem;
+	&::after {
+		content: "";
+		position: absolute;
+		top: -1.8rem;
+		left: 50%;
+		transform: translateX(-50%);
+		border-left: 1rem solid transparent;
+		border-right: 1rem solid transparent;
+		border-top: 1rem solid transparent;
+		border-bottom: 1rem solid white;
+	}
+}
+.commentCard__bars__items {
+	height: 4rem;
+	display: flex;
+	align-items: center;
+	padding: 0 1rem;
+	justify-content: center;
+	cursor: pointer;
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.1);
 	}
 }
