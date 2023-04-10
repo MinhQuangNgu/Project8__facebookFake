@@ -11,6 +11,7 @@ const Header: React.FC<props> = ({ typeBig, setTypeBig }) => {
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
 	const [type, setType] = useState<"" | "messager" | "notification">("");
+	const [conversationTab, setConversationTab] = useState([]);
 	return (
 		<div className="header padding">
 			<div className="header__brand">

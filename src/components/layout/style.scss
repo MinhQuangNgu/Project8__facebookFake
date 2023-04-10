@@ -23,6 +23,7 @@
 .header__infor {
 	width: var(--friend_infor);
 	position: relative;
+	z-index: 300;
 }
 .header__brand__wrap {
 	width: 3.7rem;
@@ -185,7 +186,7 @@
 	display: flex;
 }
 .comment__tab__items {
-	height: 60vh;
+	height: 62vh;
 	width: 33rem;
 	background-color: white;
 	box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.4);
@@ -194,6 +195,7 @@
 	display: flex;
 	flex-direction: column;
 	position: relative;
+	padding-bottom: 0.5rem;
 }
 .comment__tab__user {
 	position: absolute;
@@ -203,6 +205,10 @@
 	height: 4.5rem;
 	border-bottom: 0.1rem solid rgba(0, 0, 0, 0.4);
 	box-shadow: 0 0.05rem 0.1rem 0.05rem rgba(0, 0, 0, 0.4);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 1rem;
 }
 .comment__tab__content {
 	margin-top: 4.5rem;
@@ -210,6 +216,11 @@
 	height: 80%;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	padding-right: 0.7rem;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: end;
+	padding: 1rem 0.5rem;
 }
 .comment__tab__write {
 	width: 100%;
@@ -249,4 +260,72 @@
 	position: absolute;
 	font-size: 1.5rem;
 	margin-left: 0.3rem;
+}
+.comment__tab__user__infor {
+	display: flex;
+	align-items: center;
+}
+.comment__tab__image {
+	margin-right: 0.5rem;
+	& > img {
+		width: 3rem;
+		height: 3rem;
+		border-radius: 50%;
+		object-fit: cover;
+	}
+}
+.comment__tab__name {
+	font-size: 1.6rem;
+	padding-bottom: 0.3rem;
+	font-weight: 500;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	word-break: break-all;
+}
+.comment__tab__user__close {
+	font-size: 4rem;
+	padding-bottom: 0.9rem;
+	cursor: pointer;
+}
+.comment__own {
+	display: flex;
+	width: 100%;
+	justify-content: flex-end;
+	margin-top: 0.5rem;
+	align-items: center;
+}
+.comment__own__content {
+	background-color: #0084ff;
+	color: white;
+	padding: 1.3rem 1rem;
+	font-size: 1.4rem;
+	border-radius: 2rem;
+	max-width: 80%;
+}
+.comment__opposing {
+	display: flex;
+	width: 100%;
+	margin-top: 0.5rem;
+	align-items: center;
+}
+.comment__bars {
+	margin: 0 1rem;
+	font-size: 1.3rem;
+	display: none;
+	& > div {
+		width: 2.5rem;
+		height: 2.5rem;
+		background-color: #e4e6eb;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+	}
+}
+.comment__opposing:hover .comment__bars,
+.comment__own:hover .comment__bars {
+	display: flex;
 }
