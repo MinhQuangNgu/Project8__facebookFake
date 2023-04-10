@@ -1,6 +1,7 @@
 import Detail from "../components/detail/Detail";
 import Layout from "../components/layout/Layout";
 import Draw from "../components/page/draw/Draw";
+import Friend from "../components/page/friend/Friend";
 import Home from "../components/page/home/Home";
 import Quiz from "../components/page/quiz/Quiz";
 import QuizDetail from "../components/page/quiz/detail/QuizDetail";
@@ -26,6 +27,11 @@ export const publicRouter: router[] = [
 	{
 		path: "/draw",
 		element: Draw,
+		Layout: Layout,
+	},
+	{
+		path: "/friends",
+		element: Friend,
 		Layout: Layout,
 	},
 	{
