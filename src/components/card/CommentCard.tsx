@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./style.scss";
 import { TouchContext } from "../page/home/Home";
+import ReplyInput from "./ReplyInput";
 interface props {
 	type: string;
 	index: number;
@@ -16,6 +17,7 @@ const CommentCard: React.FC<props> = ({
 	setTouchCard,
 }) => {
 	const { touch } = useContext(TouchContext);
+	const [reply, setReply] = useState<boolean>(false);
 	return (
 		<div className="commentCard">
 			<div className="commentCard__avatar">
@@ -57,9 +59,24 @@ const CommentCard: React.FC<props> = ({
 				</div>
 				<div className="commentCared__button">
 					<div>Thích</div>
-					<div>Phản hồi</div>
+					<div
+						onClick={() => {
+							setReply(!reply);
+						}}
+					>
+						Phản hồi
+					</div>
 					<div>12 phút trước</div>
 				</div>
+				{reply && (
+					<ReplyInput
+						touchCard={touchCard}
+						setTouchCard={setTouchCard}
+						index={0}
+						type={type}
+						setType={setType}
+					/>
+				)}
 			</div>
 		</div>
 	);

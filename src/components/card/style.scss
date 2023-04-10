@@ -236,6 +236,7 @@
 	width: 100%;
 	min-height: 3rem;
 	display: flex;
+	margin-bottom: 1rem;
 }
 .commentCard__avatar {
 	margin-right: 1rem;
@@ -304,6 +305,7 @@
 	box-shadow: 0 0 1.4rem 0.05rem rgba(0, 0, 0, 0.7);
 	border-radius: 1rem;
 	padding: 0.5rem 1rem;
+	z-index: 500;
 	&::after {
 		content: "";
 		position: absolute;
@@ -326,4 +328,11 @@
 	&:hover {
 		background-color: rgba(0, 0, 0, 0.1);
 	}
+}
+.comment__reply {
+	flex: 1;
+	width: 100%;
+}
+.commentCard__body {
+	flex: 1;
 }

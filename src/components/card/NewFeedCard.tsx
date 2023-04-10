@@ -244,6 +244,13 @@ const NewFeedCard: React.FC<props> = ({ touchCard, setTouchCard, index }) => {
 					type={type}
 					setType={setType}
 				/>
+				<CommentCard
+					touchCard={touchCard}
+					setTouchCard={setTouchCard}
+					index={1}
+					type={type}
+					setType={setType}
+				/>
 			</div>
 		</div>
 	);
