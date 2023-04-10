@@ -197,7 +197,9 @@ const Header: React.FC<props> = ({ typeBig, setTypeBig }) => {
 				)}
 			</div>
 			<div className="comment__tab">
-				<CommentTab />
+				{conversationTab?.map((item, index) => (
+					<CommentTab key={index} />
+				))}
 			</div>
 		</div>
 	);

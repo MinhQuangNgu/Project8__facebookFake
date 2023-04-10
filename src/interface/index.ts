@@ -14,3 +14,17 @@ export interface router {
 export interface children {
 	children: ReactNode;
 }
+export interface quiz {
+	name: string;
+	image: string;
+	_id: string;
+	questions: [
+		{
+			_id: string;
+			correctAnswer: string;
+			image: string;
+			name: string;
+			answers: string[];
+		}
+	];
+}

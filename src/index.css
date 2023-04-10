@@ -39,3 +39,9 @@ html {
 .padding {
 	padding: 0 2rem;
 }
+.d-flex {
+	display: flex;
+}
+.center-h {
+	justify-content: center;
+}

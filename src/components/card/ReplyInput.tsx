@@ -3,6 +3,7 @@ import "./style.scss";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
 import { TouchContext } from "../page/home/Home";
+import { useLocation } from "react-router-dom";
 interface props {
 	touchCard: number;
 	type: string;
@@ -20,6 +21,7 @@ const ReplyInput: React.FC<props> = ({
 	const [comment, setComment] = useState<string>("");
 	const contentRef = useRef<HTMLDivElement>(null);
 	const { touch } = useContext(TouchContext);
+	const { pathname } = useLocation();
 	return (
 		<div className="comment__reply">
 			<div style={{ border: "0" }} className="newfeed__card__comment__form">
@@ -59,7 +61,25 @@ const ReplyInput: React.FC<props> = ({
 					{!comment && (
 						<div className="newfeed__more__abs">Viết bình luận...</div>
 					)}
-					{touch === "newfeeds" && touchCard === index && type === "reply" && (
+					{pathname === "/" &&
+						touch === "newfeeds" &&
+						touchCard === index &&
+						type === "reply" && (
+							<div className="picker__newfeed">
+								<Picker
+									data={data}
+									onEmojiSelect={(e: any) => {
+										const content = contentRef.current;
+										if (!content) {
+											return;
+										}
+										content.innerHTML = comment + e?.native;
+										setComment(content.innerHTML);
+									}}
+								/>
+							</div>
+						)}
+					{pathname !== "/" && touchCard === index && type === "reply" && (
 						<div className="picker__newfeed">
 							<Picker
 								data={data}

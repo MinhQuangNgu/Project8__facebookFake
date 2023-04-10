@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./style.scss";
 import { TouchContext } from "../page/home/Home";
 import ReplyInput from "./ReplyInput";
+import { useLocation } from "react-router-dom";
 interface props {
 	type: string;
 	index: number;
@@ -18,6 +19,8 @@ const CommentCard: React.FC<props> = ({
 }) => {
 	const { touch } = useContext(TouchContext);
 	const [reply, setReply] = useState<boolean>(false);
+
+	const { pathname } = useLocation();
 	return (
 		<div className="commentCard">
 			<div className="commentCard__avatar">
@@ -47,7 +50,8 @@ const CommentCard: React.FC<props> = ({
 						>
 							<i className="fa-solid fa-ellipsis"></i>
 						</div>
-						{touch === "newfeeds" &&
+						{pathname === "/" &&
+							touch === "newfeeds" &&
 							type === "comment" &&
 							touchCard === index && (
 								<div className="commentCard__bars__wrap">
@@ -55,6 +59,12 @@ const CommentCard: React.FC<props> = ({
 									<div className="commentCard__bars__items">Cập nhật</div>
 								</div>
 							)}
+						{pathname !== "/" && type === "comment" && touchCard === index && (
+							<div className="commentCard__bars__wrap">
+								<div className="commentCard__bars__items">Xóa</div>
+								<div className="commentCard__bars__items">Cập nhật</div>
+							</div>
+						)}
 					</div>
 				</div>
 				<div className="commentCared__button">
