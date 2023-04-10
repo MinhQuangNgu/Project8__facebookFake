@@ -7,7 +7,7 @@
 	border-radius: 1rem;
 	padding: 1rem 0;
 	margin-bottom: 2rem;
-	padding-bottom: 0;
+	padding-bottom: 1rem;
 }
 .newfeed__card__head {
 	display: flex;
@@ -227,4 +227,69 @@
 	z-index: 52;
 	right: -30%;
 	top: 100%;
+}
+.newfeed__comment__card {
+	padding: 0 1rem;
+	margin-top: 1rem;
+}
+.commentCard {
+	width: 100%;
+	min-height: 3rem;
+	display: flex;
+}
+.commentCard__avatar {
+	margin-right: 1rem;
+	& > img {
+		width: 3.5rem;
+		height: 3.5rem;
+		border-radius: 50%;
+	}
+}
+.commentCard__content_wrap {
+	display: flex;
+	min-height: 3rem;
+	font-size: 1.4rem;
+	align-items: center;
+}
+.commentCard__content {
+	background-color: #f0f2f5;
+	padding: 0.6rem 1rem;
+	margin-right: 1rem;
+	border-radius: 1.3rem;
+	& > div:first-child {
+		font-weight: 500;
+	}
+}
+.commentCard__bars {
+	width: 3rem;
+	height: 3rem;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	cursor: pointer;
+	&:hover {
+		background-color: #f0f2f5;
+	}
+}
+.commentCard:hover .commentCard__bars {
+	display: flex;
+}
+.commentCared__button {
+	display: flex;
+	margin-top: 0.3rem;
+	margin-left: 0.4rem;
+	& > div {
+		margin-right: 1rem;
+		font-weight: 500;
+		font-size: 1.2rem;
+		cursor: pointer;
+	}
+	& > div:last-child {
+		color: rgba(0, 0, 0, 0.7);
+	}
+	& > div:first-child:hover,
+	& > div:nth-child(2):hover {
+		text-decoration: underline;
+	}
 }

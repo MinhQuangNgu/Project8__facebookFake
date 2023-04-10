@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./style.scss";
 import CreateNewFeed from "../common/CreateNewFeed";
 import NewFeedCard from "../../card/NewFeedCard";
+import { TouchContext } from "./Home";
 const Newfeeds: React.FC = () => {
 	const [createNewFeed, setCreateNewFeed] = useState<boolean>(false);
+	const { setTouch } = useContext(TouchContext);
+	const [touchCard, setTouchCard] = useState<number>(-1);
 	return (
-		<div className="home__newfeeds">
-			<div className="home__newfeeds__createOne">
+		<div
+			onClick={() => {
+				if (setTouch) {
+					setTouch("newfeeds");
+				}
+			}}
+			className="home__newfeeds"
+		>
+			<div
+				onClick={() => {
+					setTouchCard(-1);
+				}}
+				className="home__newfeeds__createOne"
+			>
 				<div className="home__newfeed__head">
 					<div className="home__newfeed__image">
 						<img
@@ -48,8 +63,16 @@ const Newfeeds: React.FC = () => {
 					className="newfeed-create-abs"
 				></div>
 			)}
-			<NewFeedCard />
-			<NewFeedCard />
+			<NewFeedCard
+				index={0}
+				touchCard={touchCard}
+				setTouchCard={setTouchCard}
+			/>
+			<NewFeedCard
+				index={1}
+				touchCard={touchCard}
+				setTouchCard={setTouchCard}
+			/>
 		</div>
 	);
 };

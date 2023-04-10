@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
 import ChatWorld from "./ChatWorld";
+import { TouchContext } from "./Home";
 const Infor: React.FC = () => {
+	const { setTouch } = useContext(TouchContext);
 	return (
-		<div className="header__brand">
+		<div
+			onClick={() => {
+				if (setTouch) {
+					setTouch("infor");
+				}
+			}}
+			className="header__brand"
+		>
 			<div className="home__infor">
 				<div className="home__infor__wrap">
 					<Link className="Link" to="/">

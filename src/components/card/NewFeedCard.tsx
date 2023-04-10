@@ -1,19 +1,26 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
-const NewFeedCard: React.FC = () => {
+import CommentCard from "./CommentCard";
+import { TouchContext } from "../page/home/Home";
+interface props {
+	touchCard: number;
+	setTouchCard: React.Dispatch<React.SetStateAction<number>>;
+	index: number;
+}
+const NewFeedCard: React.FC<props> = ({ touchCard, setTouchCard, index }) => {
 	const [react, setReact] = useState<string>("");
 	const [comment, setComment] = useState<string>("");
-	const [emoji, setEmoji] = useState<boolean>(false);
-
+	const { touch } = useContext(TouchContext);
+	const [type, setType] = useState<string>("");
 	const contentRef = useRef<HTMLDivElement>(null);
 	return (
 		<div className="newfeed__card">
 			<div
 				onClick={() => {
-					setEmoji(false);
+					setTouchCard(-1);
 				}}
 				className="newfeed__card__head"
 			>
@@ -37,7 +44,7 @@ const NewFeedCard: React.FC = () => {
 			</div>
 			<div
 				onClick={() => {
-					setEmoji(false);
+					setTouchCard(-1);
 				}}
 				className="newfeed__card__body"
 			>
@@ -53,7 +60,7 @@ const NewFeedCard: React.FC = () => {
 			</div>
 			<div
 				onClick={() => {
-					setEmoji(false);
+					setTouchCard(-1);
 				}}
 				className="newfeed__card__react"
 			>
@@ -67,7 +74,7 @@ const NewFeedCard: React.FC = () => {
 			</div>
 			<div
 				onClick={() => {
-					setEmoji(false);
+					setTouchCard(-1);
 				}}
 				className="newfeed__card__comment__wrap"
 			>
@@ -158,7 +165,7 @@ const NewFeedCard: React.FC = () => {
 				</div>
 				<div
 					onClick={() => {
-						setEmoji(false);
+						setTouchCard(-1);
 					}}
 					className="newfeed__card__comment__wrap__items"
 				>
@@ -172,7 +179,7 @@ const NewFeedCard: React.FC = () => {
 			<div className="newfeed__card__comment__form">
 				<div
 					onClick={() => {
-						setEmoji(false);
+						setTouchCard(-1);
 					}}
 					className="newfeed__card__comment__form-img"
 				>
@@ -188,7 +195,7 @@ const NewFeedCard: React.FC = () => {
 							setComment(value.innerHTML);
 						}}
 						onClick={() => {
-							setEmoji(false);
+							setTouchCard(-1);
 						}}
 						ref={contentRef}
 						className="newfeed__card__input_main"
@@ -196,7 +203,13 @@ const NewFeedCard: React.FC = () => {
 					></div>
 					<div
 						onClick={() => {
-							setEmoji(!emoji);
+							if (touchCard === index) {
+								setTouchCard(-1);
+								setType("");
+							} else {
+								setTouchCard(index);
+								setType("emoji");
+							}
 						}}
 						className="newfeed__add__icons"
 					>
@@ -206,7 +219,7 @@ const NewFeedCard: React.FC = () => {
 					{!comment && (
 						<div className="newfeed__more__abs">Viết bình luận...</div>
 					)}
-					{emoji && (
+					{touch === "newfeeds" && type === "emoji" && touchCard === index && (
 						<div className="picker__newfeed">
 							<Picker
 								data={data}
@@ -222,6 +235,9 @@ const NewFeedCard: React.FC = () => {
 						</div>
 					)}
 				</div>
+			</div>
+			<div className="newfeed__comment__card">
+				<CommentCard />
 			</div>
 		</div>
 	);
