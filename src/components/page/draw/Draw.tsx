@@ -12,14 +12,19 @@ const Draw: React.FC = () => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	return (
 		<div className="draw">
+			<div className="draw__user">
+				<DrawCard width={"100%"} />
+				<DrawCard width={"100%"} />
+			</div>
 			<div className="draw__wrap">
 				<div>
-					<DrawCard />
-					<DrawCard />
-					<DrawCard />
+					<DrawCard width={"33%"} margin={true} />
+					<DrawCard width={"33%"} margin={true} />
+					<DrawCard width={"33%"} margin={true} />
+					<DrawCard width={"33%"} margin={true} />
 				</div>
 			</div>
-			{!item && (
+			{item && (
 				<div className="draw__viewAll">
 					<div className="draw__viewAll__a">
 						<div className="draw__viewAll__image">
@@ -95,13 +100,15 @@ const Draw: React.FC = () => {
 					</div>
 				</div>
 			)}
-			{!item && (
+			{item && (
 				<div
 					onClick={() => {
 						setItem(false);
 					}}
 					className="draw__viewAll__abs"
-				></div>
+				>
+					<div className="times__abs">&times;</div>
+				</div>
 			)}
 		</div>
 	);
