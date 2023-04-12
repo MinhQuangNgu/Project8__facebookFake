@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./style.scss";
-import NewFeedCard from "../../card/NewFeedCard";
 import WatchCard from "./WatchCard";
 const Watch: React.FC = () => {
 	const [touchCard, setTouchCard] = useState<number>(-1);
