@@ -1,10 +1,12 @@
 import React from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
-
-const QuizCard: React.FC = () => {
+interface props {
+	full?: boolean;
+}
+const QuizCard: React.FC<props> = ({ full }) => {
 	return (
-		<div className="quizCard">
+		<div style={full ? { width: "100%" } : {}} className="quizCard">
 			<div className="quizCard__wrap">
 				<Link to={`/quiz/detail/${2}`}>
 					<div className="quizCard__image">

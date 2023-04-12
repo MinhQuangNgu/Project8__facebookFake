@@ -6,10 +6,7 @@ interface props {
 const DrawCard: React.FC<props> = ({ width, margin }) => {
 	const [heart, setHeart] = useState(false);
 	return (
-		<div
-			style={margin ? { width: width } : { width: width, margin: 0 }}
-			className="draw__items"
-		>
+		<div style={!margin ? { width: "100%" } : {}} className="draw__items">
 			<div className="draw__items__container">
 				<img
 					src="https://img6.thuthuatphanmem.vn/uploads/2022/02/14/background-3d-dep-cho-zoom_022130840.jpg"

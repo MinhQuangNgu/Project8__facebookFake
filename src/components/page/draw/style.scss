@@ -11,16 +11,28 @@
 	margin-bottom: 2rem;
 	box-shadow: 0 0 0.2rem 0.05rem rgba(0, 0, 0, 0.2);
 	border-radius: 1rem;
-	padding: 1rem 0;
+	padding: 1rem;
 	& > div {
 		display: flex;
 		flex-wrap: wrap;
 	}
 }
 .draw__items {
-	width: 33%;
+	width: 33.33333333%;
 	padding: 0.5rem;
 	overflow: hidden;
+}
+.draw__title {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 0.5rem;
+	font-size: 1.6rem;
+	margin-bottom: 2rem;
+	align-items: center;
+	& > div:first-child {
+		font-weight: 600;
+		font-size: 1.8rem;
+	}
 }
 .draw__items__container {
 	height: 20rem;

@@ -4,6 +4,7 @@ import DrawCard from "./DrawCard";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import CommentCard from "../../card/CommentCard";
+import { Link } from "react-router-dom";
 const Draw: React.FC = () => {
 	const [item, setItem] = useState(false);
 	const [touchCard, setTouchCard] = useState(-1);
@@ -13,15 +14,21 @@ const Draw: React.FC = () => {
 	return (
 		<div className="draw">
 			<div className="draw__user">
+				<div className="draw__title">
+					<div>Ảnh của bạn</div>
+					<div>
+						<Link to="/">Xem tất cả</Link>
+					</div>
+				</div>
 				<DrawCard width={"100%"} />
 				<DrawCard width={"100%"} />
 			</div>
 			<div className="draw__wrap">
 				<div>
-					<DrawCard width={"33%"} margin={true} />
-					<DrawCard width={"33%"} margin={true} />
-					<DrawCard width={"33%"} margin={true} />
-					<DrawCard width={"33%"} margin={true} />
+					<DrawCard width={`${100 / 3}%`} margin={true} />
+					<DrawCard width={`${100 / 3}%`} margin={true} />
+					<DrawCard width={`${100 / 3}%`} margin={true} />
+					<DrawCard width={`${100 / 3}%`} margin={true} />
 				</div>
 			</div>
 			{item && (
