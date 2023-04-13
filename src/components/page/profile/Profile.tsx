@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.scss";
-import NewFeedCard from "../../card/NewFeedCard";
+import { useLocation, useNavigate } from "react-router-dom";
+import HomeProfile from "./page/HomeProfile";
+import FriendProfile from "./page/FriendProfile";
+import PhotoProfile from "./page/PhotoProfile";
 type Props = {};
 
 const Profile: React.FC = (props: Props) => {
-	const [touchCard, setTouchCard] = useState<number>(-1);
+	const navigate = useNavigate();
+	const [param, setParam] = useState<string>("");
+	const { search } = useLocation();
+	useEffect(() => {
+		const type = new URLSearchParams(search).get("type") || "";
+		setParam(type);
+	}, [search]);
 	return (
 		<div className="profile">
 			<div className="profile__wrap">
@@ -77,139 +86,40 @@ const Profile: React.FC = (props: Props) => {
 						</div>
 					</div>
 					<div className="padding__profile profile__user__navbar">
-						<div className="profile__user__navbar__items active">Bài viết</div>
-						<div className="profile__user__navbar__items">Bạn bè</div>
+						<div
+							onClick={() => {
+								navigate("?");
+							}}
+							className={`profile__user__navbar__items ${!param && "active"}`}
+						>
+							Bài viết
+						</div>
+						<div
+							onClick={() => {
+								navigate("?type=friends");
+							}}
+							className={`profile__user__navbar__items ${
+								param === "friends" && "active"
+							}`}
+						>
+							Bạn bè
+						</div>
+						<div
+							onClick={() => {
+								navigate("?type=photos");
+							}}
+							className={`profile__user__navbar__items ${
+								param === "photos" && "active"
+							}`}
+						>
+							Ảnh
+						</div>
 					</div>
 				</div>
 			</div>
-			<div className="padding__profile profile__detail">
-				<div className="profile__detail__1">
-					<div className="border__shadow profile__detail__1__introduction">
-						<div className="__title">Giới thiệu</div>
-						<div className="__description">Anh quang ơi đẹp tria quá</div>
-						<div className="__button">
-							<button>Chỉnh sửa giới thiệu</button>
-						</div>
-					</div>
-					<div className="border__shadow profile__detail__1__introduction">
-						<div className="__title">Ảnh</div>
-						<div className="__image__wrap">
-							<img
-								className="__img"
-								src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-17.jpg"
-								alt="Ảnh"
-							/>
-							<img
-								className="__img"
-								src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-17.jpg"
-								alt="Ảnh"
-							/>
-							<img
-								className="__img"
-								src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-17.jpg"
-								alt="Ảnh"
-							/>
-							<img
-								className="__img"
-								src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-17.jpg"
-								alt="Ảnh"
-							/>
-						</div>
-						<div className="__button">
-							<button>Xem tất cả</button>
-						</div>
-					</div>
-					<div className="border__shadow profile__detail__1__introduction sticky">
-						<div className="__title">Bạn bè</div>
-						<div className="__image__wrap">
-							<div className="__image__card">
-								<img
-									src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-17.jpg"
-									alt="Ảnh"
-								/>
-								<div> Minh Quang</div>
-							</div>
-							<div className="__image__card">
-								<img
-									src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-17.jpg"
-									alt="Ảnh"
-								/>
-								<div>Minh Quang</div>
-							</div>
-							<div className="__image__card">
-								<img
-									src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-17.jpg"
-									alt="Ảnh"
-								/>
-								<div> Minh Quang</div>
-							</div>
-							<div className="__image__card">
-								<img
-									src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-17.jpg"
-									alt="Ảnh"
-								/>
-								<div>Nguyen Minh Quang</div>
-							</div>
-							<div className="__image__card">
-								<img
-									src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-17.jpg"
-									alt="Ảnh"
-								/>
-								<div>Nguyen Minh Quang</div>
-							</div>
-							<div className="__image__card">
-								<img
-									src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-17.jpg"
-									alt="Ảnh"
-								/>
-								<div>Nguyen Minh Quang</div>
-							</div>
-							<div className="__image__card">
-								<img
-									src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-17.jpg"
-									alt="Ảnh"
-								/>
-								<div>Minh Quang</div>
-							</div>
-
-							<div className="__image__card">
-								<img
-									src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-17.jpg"
-									alt="Ảnh"
-								/>
-								<div>Nguyen Minh Quang</div>
-							</div>
-							<div className="__image__card">
-								<img
-									src="https://treobangron.com.vn/wp-content/uploads/2022/09/background-dep-17.jpg"
-									alt="Ảnh"
-								/>
-								<div>Nguyen Minh Quang</div>
-							</div>
-						</div>
-						<div className="__button">
-							<button>Xem tất cả</button>
-						</div>
-					</div>
-				</div>
-				<div className="profile__detail__2">
-					<NewFeedCard
-						index={0}
-						touchCard={touchCard}
-						setTouchCard={setTouchCard}
-					/>
-					<NewFeedCard
-						index={2}
-						touchCard={touchCard}
-						setTouchCard={setTouchCard}
-					/>
-					<NewFeedCard
-						index={3}
-						touchCard={touchCard}
-						setTouchCard={setTouchCard}
-					/>
-				</div>
-			</div>
+			{!param && <HomeProfile />}
+			{param === "friends" && <FriendProfile />}
+			{param === "photos" && <PhotoProfile />}
 		</div>
 	);
 };

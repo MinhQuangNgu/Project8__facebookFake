@@ -142,9 +142,17 @@ $_padding: 3rem;
 	&:hover {
 		background-color: rgba(0, 0, 0, 0.06);
 	}
+	position: relative;
 	&.active {
 		color: #1b74e4;
-		border-bottom: 0.3rem solid #1b74e4;
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: -0.5rem;
+			left: 0;
+			right: 0;
+			border-bottom: 0.4rem solid #1b74e4;
+		}
 	}
 }
 .profile__detail {
@@ -234,4 +242,36 @@ $_padding: 3rem;
 		font-size: 1.3rem;
 		text-align: center;
 	}
+}
+.friendProfile {
+	margin: 2rem 0;
+	width: $width;
+	min-height: 10rem;
+	background-color: white;
+	border-radius: 0.8rem;
+	padding: 2rem 1.5rem;
+}
+.friendsNavbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.friendsNavbar__items {
+	& > input {
+		margin-right: 1rem;
+		width: 20rem;
+		height: 4rem;
+		background-color: #f0f2f5;
+		border: none;
+		border-radius: 2rem;
+		padding: 0 1rem;
+		outline: none;
+		font-size: 1.5rem;
+	}
+}
+.__link {
+	font-size: 1.5rem;
+	color: #4b95f5;
+	text-decoration: none;
+	font-weight: 600;
 }
