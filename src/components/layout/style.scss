@@ -329,3 +329,37 @@
 .comment__own:hover .comment__bars {
 	display: flex;
 }
+.header__infor__userInfor {
+	position: absolute;
+	top: 122%;
+	right: 0;
+	width: 25rem;
+	min-height: 10rem;
+	background-color: white;
+	box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.4);
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+}
+.header__infor__userInfor__items {
+	width: 100%;
+	height: 6rem;
+	display: flex;
+	padding: 0.5rem;
+	align-items: center;
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.05);
+	}
+}
+.header__icons {
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #e4e6eb;
+	margin-right: 0.8rem;
+}
+.header__title {
+	font-size: 1.8rem;
+}

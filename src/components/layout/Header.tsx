@@ -10,7 +10,9 @@ interface props {
 const Header: React.FC<props> = ({ typeBig, setTypeBig }) => {
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
-	const [type, setType] = useState<"" | "messager" | "notification">("");
+	const [type, setType] = useState<
+		"" | "messager" | "notification" | "userinfor"
+	>("");
 	const [conversationTab, setConversationTab] = useState([]);
 	return (
 		<div className="header padding">
@@ -128,15 +130,40 @@ const Header: React.FC<props> = ({ typeBig, setTypeBig }) => {
 					<i className="fa-solid fa-bell"></i>
 				</div>
 				<div className="header__infor__items">
-					<img src={Hippo} />
+					<img
+						onClick={() => {
+							setTypeBig("messager");
+							if (type !== "userinfor") {
+								setType("userinfor");
+							} else {
+								setType("");
+							}
+						}}
+						src={Hippo}
+					/>
+					{typeBig && type === "userinfor" && (
+						<div className="header__infor__userInfor">
+							<div className="header__infor__userInfor__items">
+								<div className="header__icons">
+									<i className="fa-solid fa-person-half-dress"></i>
+								</div>
+								<div className="header__title">Trang cá nhân</div>
+							</div>
+							<div className="header__infor__userInfor__items">
+								<div className="header__icons">
+									<i className="fa-solid fa-door-open"></i>
+								</div>
+								<div className="header__title">Đăng xuất</div>
+							</div>
+						</div>
+					)}
 				</div>
-				{typeBig && type && (
+				{typeBig && type && type !== "userinfor" && (
 					<div className="message__container">
 						<div className="message__wrap">
 							<div className="message__header">
 								<h1>{type === "messager" ? "Chat" : "Thông Báo"}</h1>
 							</div>
-
 							{type === "messager" && (
 								<div className="message__body">
 									<div className="message__body__items">
