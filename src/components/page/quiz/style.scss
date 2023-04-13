@@ -12,13 +12,16 @@
 	box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.2);
 	border-radius: 0.5rem;
 	padding: 1rem;
+}
+.quiz__container__wrap {
+	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
 }
 .quizCard {
 	width: 33%;
 	padding: 0 1rem;
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 	@include mobile {
 		width: 100%;
 	}

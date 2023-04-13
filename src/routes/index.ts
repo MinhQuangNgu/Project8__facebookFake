@@ -4,6 +4,7 @@ import Register from "../components/page/auth/Register";
 import Draw from "../components/page/draw/Draw";
 import Friend from "../components/page/friend/Friend";
 import Home from "../components/page/home/Home";
+import Profile from "../components/page/profile/Profile";
 import Quiz from "../components/page/quiz/Quiz";
 import QuizDetail from "../components/page/quiz/detail/QuizDetail";
 import Watch from "../components/page/watch/Watch";
@@ -43,6 +44,11 @@ export const publicRouter: router[] = [
 	{
 		path: "/friends",
 		element: Friend,
+		Layout: Layout,
+	},
+	{
+		path: "/:id",
+		element: Profile,
 		Layout: Layout,
 	},
 	{

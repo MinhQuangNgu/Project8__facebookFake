@@ -143,7 +143,13 @@ const Header: React.FC<props> = ({ typeBig, setTypeBig }) => {
 					/>
 					{typeBig && type === "userinfor" && (
 						<div className="header__infor__userInfor">
-							<div className="header__infor__userInfor__items">
+							<div
+								onClick={() => {
+									setType("");
+									navigate("/asd");
+								}}
+								className="header__infor__userInfor__items"
+							>
 								<div className="header__icons">
 									<i className="fa-solid fa-person-half-dress"></i>
 								</div>

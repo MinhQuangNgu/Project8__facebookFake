@@ -16,10 +16,15 @@ const Quiz: React.FC = () => {
 					</div>
 				</div>
 				<QuizCard full={true} />
+				<QuizCard full={true} />
 			</div>
 			<div style={{ marginBottom: "2rem" }} className="quiz__container">
-				<QuizCard />
-				<QuizCard />
+				<div className="quiz__container__wrap">
+					<QuizCard />
+					<QuizCard />
+					<QuizCard />
+					<QuizCard />
+				</div>
 			</div>
 		</div>
 	);

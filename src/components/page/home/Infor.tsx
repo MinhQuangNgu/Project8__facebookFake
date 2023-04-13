@@ -16,7 +16,7 @@ const Infor: React.FC = () => {
 		>
 			<div className="home__infor">
 				<div className="home__infor__wrap">
-					<Link className="Link" to="/">
+					<Link className="Link" to="/asd">
 						<div className="home__infor__items">
 							<div className="home__infor__items__image">
 								<img
