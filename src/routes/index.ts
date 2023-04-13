@@ -1,5 +1,6 @@
 import Layout from "../components/layout/Layout";
 import Login from "../components/page/auth/Login";
+import Register from "../components/page/auth/Register";
 import Draw from "../components/page/draw/Draw";
 import Friend from "../components/page/friend/Friend";
 import Home from "../components/page/home/Home";
@@ -25,8 +26,13 @@ export const publicRouter: router[] = [
 		Layout: Layout,
 	},
 	{
-		path: "/register",
+		path: "/login",
 		element: Login,
+		Layout: null,
+	},
+	{
+		path: "/register",
+		element: Register,
 		Layout: null,
 	},
 	{

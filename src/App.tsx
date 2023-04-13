@@ -1,6 +1,11 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicRouter } from "./routes";
+declare global {
+	interface Window {
+		google: any;
+	}
+}
 function App() {
 	return (
 		<Router>

@@ -1,10 +1,14 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./style.scss";
 import { Link, useNavigate } from "react-router-dom";
-const Login: React.FC = () => {
+type Props = {};
+
+const Register: React.FC = (props: Props) => {
 	const navigate = useNavigate();
 	const [password, setPassword] = useState<boolean>(false);
+	const [repassword, setRePassword] = useState<boolean>(false);
 	const passwordRef = useRef<HTMLInputElement>(null);
+	const repasswordRef = useRef<HTMLInputElement>(null);
 	useEffect(() => {
 		window.google?.accounts?.id?.initialize({
 			client_id:
@@ -28,6 +32,9 @@ const Login: React.FC = () => {
 	return (
 		<div className="auth">
 			<div className="auth__wrap">
+				<div className="auth__input">
+					<input placeholder="Nhập tên" type="text" name="name" />
+				</div>
 				<div className="auth__input">
 					<input placeholder="Nhập email" type="text" name="email" />
 				</div>
@@ -62,8 +69,39 @@ const Login: React.FC = () => {
 						)}
 					</div>
 				</div>
+				<div className="auth__input auth__password">
+					<input
+						ref={repasswordRef}
+						placeholder="Nhập lại mật khẩu"
+						type="password"
+						name="password"
+					/>
+					<div className="eyes">
+						{!repassword ? (
+							<i
+								onClick={() => {
+									if (repasswordRef.current) {
+										repasswordRef.current.type = "text";
+									}
+									setRePassword(true);
+								}}
+								className="fa-solid fa-eye-slash"
+							></i>
+						) : (
+							<i
+								onClick={() => {
+									if (repasswordRef.current) {
+										repasswordRef.current.type = "password";
+									}
+									setRePassword(false);
+								}}
+								className="fa-solid fa-eye"
+							></i>
+						)}
+					</div>
+				</div>
 				<div className="auth__button">
-					<button>Đăng nhập</button>
+					<button>Đăng Ký</button>
 				</div>
 				<div className="auth__forgot">
 					<Link to="/forgot__password">Quên mật khẩu</Link>
@@ -74,10 +112,10 @@ const Login: React.FC = () => {
 				<div className="auth__button__register">
 					<button
 						onClick={() => {
-							navigate("/register");
+							navigate("/login");
 						}}
 					>
-						Tạo tài khoản
+						Đã có tài khoản?
 					</button>
 				</div>
 			</div>
@@ -85,4 +123,4 @@ const Login: React.FC = () => {
 	);
 };
 
-export default Login;
+export default Register;
