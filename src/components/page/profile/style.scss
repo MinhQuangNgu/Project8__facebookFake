@@ -1,3 +1,4 @@
+@import "../../../style.module.scss";
 $width: 70%;
 $_padding: 3rem;
 .profile {
@@ -250,6 +251,7 @@ $_padding: 3rem;
 	background-color: white;
 	border-radius: 0.8rem;
 	padding: 2rem 1.5rem;
+	margin-bottom: 5rem;
 }
 .friendsNavbar {
 	display: flex;
@@ -274,4 +276,264 @@ $_padding: 3rem;
 	color: #4b95f5;
 	text-decoration: none;
 	font-weight: 600;
+}
+.friendProfile__wrap {
+	margin-top: 2rem;
+	display: flex;
+	flex-wrap: wrap;
+}
+.friendProfile__items {
+	width: calc(50% - 1rem);
+	margin: 0 0.5rem;
+	height: 11rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1.5rem;
+	border: 0.1rem solid rgba(0, 0, 0, 0.08);
+	border-radius: 0.5rem;
+	margin-bottom: 1rem;
+}
+.friendProfile__item__1 {
+	display: flex;
+	align-items: center;
+}
+.friendProfile__item__1_img {
+	margin-right: 1rem;
+	& > img {
+		width: 8rem;
+		height: 8rem;
+		object-fit: cover;
+		border-radius: 1rem;
+	}
+}
+.friendProfile__item__1_name {
+	& > div:first-child {
+		font-size: 1.5rem;
+		font-weight: 500;
+	}
+	& > div:nth-child(2) {
+		font-size: 1.2rem;
+		font-weight: 450;
+		color: rgba(0, 0, 0, 0.7);
+	}
+}
+.friendProfile__item__2 {
+	width: 3.5rem;
+	height: 3.5rem;
+	position: relative;
+	& > div:first-child {
+		width: 3.5rem;
+		height: 3.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.8rem;
+		cursor: pointer;
+		border-radius: 50%;
+	}
+	& > div:first-child:hover {
+		background-color: rgba(0, 0, 0, 0.1);
+	}
+}
+._link_name {
+	color: black;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+.friendProfile__item__2_abs {
+	position: absolute;
+	top: 120%;
+	left: 1.5rem;
+	width: 15rem;
+	background-color: white;
+	border-radius: 1rem;
+	z-index: 3;
+	box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.4);
+}
+.friendProfile__item__2_abs-items {
+	height: 4.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	font-size: 1.5rem;
+	border-radius: 1rem;
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.1);
+	}
+}
+.friendProfile__item__2_abs_2 {
+	position: absolute;
+	top: 70%;
+	left: 1.5rem;
+	z-index: 2;
+	border-left: 2rem solid rgba(0, 0, 0, 0.15);
+	border-right: 1.2rem solid transparent;
+	border-bottom: 1.2rem solid rgba(0, 0, 0, 0.15);
+	border-top: 1.4rem solid transparent;
+}
+.photoProfile__wrap {
+	margin-top: 2rem;
+	display: flex;
+	flex-wrap: wrap;
+}
+.phtoProfile__items {
+	width: 33.33333%;
+	padding: 0.5rem;
+}
+.phtoProfile__items__detail {
+	cursor: pointer;
+	width: 100%;
+	height: 30rem;
+	position: relative;
+	border: 0.1rem solid rgba(0, 0, 0, 0.1);
+	border-radius: 0.5rem;
+	overflow: hidden;
+	& > img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	&:hover {
+		opacity: 0.9;
+	}
+}
+.photoProflie__items_abs {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: none;
+	transform: translate(-50%, -50%);
+	& > button {
+		width: 10rem;
+		height: 4rem;
+		background-color: red;
+		border: none;
+		border-radius: 2rem;
+		color: white;
+		font-size: 1.7rem;
+		cursor: pointer;
+		&:hover {
+			transform: scale(0.9);
+		}
+	}
+}
+.phtoProfile__items__detail:hover .photoProflie__items_abs {
+	display: block;
+}
+.quiz__container {
+	margin-top: 2rem;
+	min-height: calc(100vh - 10rem);
+}
+.quizCard {
+	position: relative;
+}
+.quizCard__point {
+	position: absolute;
+	top: 1rem;
+	left: -1.1rem;
+	width: 8rem;
+	border-radius: 0 0.2rem 0.2rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-size: 1.7rem;
+	padding-bottom: 0.2rem;
+	height: 2.5rem;
+	background-color: #ff8a08;
+	&::after {
+		content: "";
+		position: absolute;
+		left: -0.05rem;
+		bottom: -1.15rem;
+		border-left: 0.7rem solid transparent;
+		border-right: 0.7rem solid #ff8a08;
+		border-bottom: 0.7rem solid transparent;
+		border-top: 0.7rem solid #ff8a08;
+	}
+}
+.quizCard__time {
+	position: absolute;
+	left: 0;
+	bottom: 2rem;
+	width: 12rem;
+	height: 2rem;
+	background-color: #ff8a08;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-size: 1.3rem;
+}
+.quizProfile__items {
+	width: 33.333%;
+	padding: 0.5rem;
+}
+.quizProfile__items__card {
+	width: 100%;
+	height: 20rem;
+	position: relative;
+	border: 0.1rem solid rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	& > img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+.quizProfile__items__name {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 0.4rem 0.5rem;
+	text-align: center;
+	font-size: 1.4rem;
+	background-color: rgba(255, 255, 255, 0.8);
+	color: rgba(0, 0, 0, 0.7);
+	font-weight: 600;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	word-break: break-all;
+	overflow: hidden;
+}
+.quizProfile__items__edit {
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	& > div:first-child {
+		width: 2.7rem;
+		height: 2.7rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.7rem;
+		border-radius: 50%;
+		background-color: rgba(255, 255, 255, 0.3);
+	}
+}
+.quizProfile__item__bars {
+	position: absolute;
+	top: 3.5rem;
+	right: 0.5rem;
+	width: 10rem;
+	background-color: white;
+	box-shadow: 0 0 0.5rem 0.1rem rgba(255, 255, 255, 0.8);
+	border-radius: 0.5rem;
+	overflow: hidden;
+}
+.quizProfile__item__bars__items {
+	width: 100%;
+	height: 4rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.4rem;
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.06);
+	}
 }

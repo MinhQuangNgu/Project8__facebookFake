@@ -4,6 +4,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import HomeProfile from "./page/HomeProfile";
 import FriendProfile from "./page/FriendProfile";
 import PhotoProfile from "./page/PhotoProfile";
+import DrawProfile from "./page/DrawProfile";
+import QuizProfile from "./page/QuizProfile";
+import QuizHistoryProfile from "./page/QuizHistoryProfile";
 type Props = {};
 
 const Profile: React.FC = (props: Props) => {
@@ -114,12 +117,46 @@ const Profile: React.FC = (props: Props) => {
 						>
 							Ảnh
 						</div>
+						<div
+							onClick={() => {
+								navigate("?type=draws");
+							}}
+							className={`profile__user__navbar__items ${
+								param === "draws" && "active"
+							}`}
+						>
+							Ảnh Vẽ
+						</div>
+						<div
+							onClick={() => {
+								navigate("?type=quizz");
+							}}
+							className={`profile__user__navbar__items ${
+								param === "quizz" && "active"
+							}`}
+						>
+							Quiz của bạn
+						</div>
+						<div
+							onClick={() => {
+								navigate("?type=historyQuiz");
+							}}
+							className={`profile__user__navbar__items ${
+								param === "historyQuiz" && "active"
+							}`}
+						>
+							Lịch sử làm Quiz
+						</div>
 					</div>
 				</div>
 			</div>
 			{!param && <HomeProfile />}
 			{param === "friends" && <FriendProfile />}
 			{param === "photos" && <PhotoProfile />}
+			{param === "photos" && <PhotoProfile />}
+			{param === "draws" && <DrawProfile />}
+			{param === "quizz" && <QuizProfile />}
+			{param === "historyQuiz" && <QuizHistoryProfile />}
 		</div>
 	);
 };

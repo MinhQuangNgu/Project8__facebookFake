@@ -10,7 +10,7 @@ const Quiz: React.FC = () => {
 				className="draw__user"
 			>
 				<div style={{ padding: "0rem 1rem" }} className="draw__title">
-					<div>Ảnh của bạn</div>
+					<div>Quiz của bạn</div>
 					<div>
 						<Link to="/">Xem tất cả</Link>
 					</div>
