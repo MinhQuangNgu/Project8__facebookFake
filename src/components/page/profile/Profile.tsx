@@ -153,7 +153,6 @@ const Profile: React.FC = (props: Props) => {
 			{!param && <HomeProfile />}
 			{param === "friends" && <FriendProfile />}
 			{param === "photos" && <PhotoProfile />}
-			{param === "photos" && <PhotoProfile />}
 			{param === "draws" && <DrawProfile />}
 			{param === "quizz" && <QuizProfile />}
 			{param === "historyQuiz" && <QuizHistoryProfile />}

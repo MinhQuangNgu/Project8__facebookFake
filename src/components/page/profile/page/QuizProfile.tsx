@@ -12,7 +12,7 @@ const QuizProfile: React.FC = (props: Props) => {
 					Quiz của bạn
 				</div>
 				<div style={{ marginRight: ".5rem" }} className="friendsNavbar__items">
-					<Link className="__link" to="/friends">
+					<Link className="__link" to="/quiz/manager">
 						Quản lý / tạo mới Quiz
 					</Link>
 				</div>
