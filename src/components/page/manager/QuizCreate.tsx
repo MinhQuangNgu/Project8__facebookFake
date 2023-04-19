@@ -1,16 +1,22 @@
 import React, { useRef, useState } from "react";
 import "./style.scss";
+import QuizAnswerManager from "./components/QuizAnswerManager";
 type Props = {};
-
+interface answers {
+	image?: string;
+	content?: string;
+}
 const QuizCreate: React.FC = (props: Props) => {
+	//question
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [content, setContent] = useState<string>("");
-
 	const [image, setImage] = useState<string>("");
 	const imageRef = useRef<File>();
-	//question
-
 	//end question
+
+	//answer
+	const [answer, setAnswer] = useState<answers[]>([{}, {}, {}, {}]);
+	//end answer
 	const handleGetFile = (
 		e: React.ChangeEvent<HTMLInputElement>,
 		type: string
@@ -77,6 +83,9 @@ const QuizCreate: React.FC = (props: Props) => {
 								>
 									{!image && <i className="fa-regular fa-image"></i>}
 									{!image && <i>Hình Ảnh</i>}
+									{image && (
+										<div className="quizCreateForm__head__change">Thay ảnh</div>
+									)}
 								</label>
 								<input
 									accept="image/*"
@@ -107,6 +116,17 @@ const QuizCreate: React.FC = (props: Props) => {
 								Nhập câu hỏi ở đây...
 							</div>
 						)}
+					</div>
+					<div className="quizCreateForm__head__3">
+						{answer?.map((item, index) => (
+							<QuizAnswerManager
+								answer={answer}
+								setAnswer={setAnswer}
+								item={item}
+								key={index}
+								index={index}
+							/>
+						))}
 					</div>
 				</div>
 			</div>
