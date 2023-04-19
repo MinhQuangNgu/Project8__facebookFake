@@ -1,29 +1,41 @@
 import React from "react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 interface answers {
 	image?: string;
 	content?: string;
 }
 type Props = {
 	item: answers;
-	answer: answers[];
-	setAnswer: React.Dispatch<React.SetStateAction<answers[]>>;
 	index: number;
+	handleChangeContentAnswer: (content: string, index: number) => void;
+	handleRemoveContentAnswer: (index: number) => void;
 };
 
 const QuizAnswerManager: React.FC<Props> = ({
 	item,
-	answer,
-	setAnswer,
 	index,
+	handleChangeContentAnswer,
+	handleRemoveContentAnswer,
 }) => {
 	const contentAnswerRef = useRef<HTMLDivElement>(null);
 	const [content, setContent] = useState<string>("");
+	useEffect(() => {
+		if (contentAnswerRef.current && item?.content) {
+			contentAnswerRef.current.innerHTML = item?.content;
+			setContent(item?.content);
+		}
+	}, [item]);
 	return (
 		<div className="quizCreateForm__head__3__items">
 			<div className="quizCreateForm__head__3__items_wrap">
 				<div className="quizCreateForm3___head">
-					<div title="Xóa phương án" className="quizCreateForm3__head__items">
+					<div
+						onClick={() => {
+							handleRemoveContentAnswer(index);
+						}}
+						title="Xóa phương án"
+						className="quizCreateForm3__head__items"
+					>
 						<i className="fa-solid fa-trash"></i>
 					</div>
 					<div title="Thêm ảnh" className="quizCreateForm3__head__items">
@@ -40,6 +52,7 @@ const QuizAnswerManager: React.FC<Props> = ({
 						onInput={(e) => {
 							const value = e.target as HTMLElement;
 							setContent(value.innerHTML);
+							handleChangeContentAnswer(value.innerHTML, index);
 						}}
 						ref={contentAnswerRef}
 						tabIndex={1}

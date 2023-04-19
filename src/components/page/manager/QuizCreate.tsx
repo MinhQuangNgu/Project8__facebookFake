@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 import "./style.scss";
 import QuizAnswerManager from "./components/QuizAnswerManager";
 type Props = {};
@@ -65,6 +65,37 @@ const QuizCreate: React.FC = (props: Props) => {
 		e.preventDefault();
 		e.stopPropagation();
 	};
+	const [update, setUpdate] = useState<boolean>(false);
+	const handleChangeContentAnswer = useCallback(
+		(content: string, index: number) => {
+			const ans = answer;
+			ans[index].content = content;
+			setAnswer(ans);
+			setUpdate(!update);
+		},
+		[update]
+	);
+	const handleRemoveContentAnswer = useCallback(
+		(index: number) => {
+			const ans = answer;
+			if (ans.length <= 2) {
+				window.alert("Cần ít nhất 2 đáp án.");
+				return;
+			}
+			ans.splice(index, 1);
+			setAnswer([...ans]);
+			setUpdate(!update);
+		},
+		[update]
+	);
+
+	const handleAddAnswer = () => {
+		if (answer?.length === 5) {
+			return;
+		}
+		setAnswer([...answer, {}]);
+		setUpdate(!update);
+	};
 
 	return (
 		<div className="quizCreate">
@@ -120,13 +151,26 @@ const QuizCreate: React.FC = (props: Props) => {
 					<div className="quizCreateForm__head__3">
 						{answer?.map((item, index) => (
 							<QuizAnswerManager
-								answer={answer}
-								setAnswer={setAnswer}
+								handleChangeContentAnswer={handleChangeContentAnswer}
 								item={item}
 								key={index}
+								handleRemoveContentAnswer={handleRemoveContentAnswer}
 								index={index}
 							/>
 						))}
+						<div
+							onClick={handleAddAnswer}
+							className={`addAnswer ${answer?.length === 5 && "banAddAnswer"}`}
+						>
+							+
+							{answer?.length === 5 && (
+								<div style={{ position: "relative" }}>
+									<div className="annouce">
+										Bạn không thể thêm nhiều hơn 5 phương án
+									</div>
+								</div>
+							)}
+						</div>
 					</div>
 				</div>
 			</div>

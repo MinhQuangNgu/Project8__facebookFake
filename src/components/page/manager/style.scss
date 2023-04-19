@@ -156,6 +156,7 @@
 	width: 100%;
 	margin-top: 4rem;
 	display: flex;
+	position: relative;
 }
 .quizCreateForm__head__3__items {
 	width: 100%;
@@ -213,4 +214,67 @@
 	word-break: keep-all;
 	font-weight: 600;
 	color: rgba(0, 0, 0, 0.6);
+	text-align: center;
+}
+.addAnswer {
+	position: absolute;
+	right: -9rem;
+	top: 50%;
+	width: 4.5rem;
+	height: 4.5rem;
+	border-radius: 50%;
+	border: 0.1rem solid rgba(0, 0, 0, 0.7);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 5rem;
+	padding-bottom: 1rem;
+	cursor: pointer;
+	&:hover {
+		transform: scale(0.9);
+	}
+}
+.banAddAnswer {
+	cursor: not-allowed;
+	background-color: red;
+	color: white;
+	border: white;
+	&:hover {
+		transform: scale(1);
+	}
+}
+.annouce {
+	position: absolute;
+	right: -0.2rem;
+	width: 40rem;
+	top: -7rem;
+	font-size: 1.8rem;
+	height: 4rem;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background-color: red;
+	border-radius: 1rem;
+	animation: appearing ease 1s;
+	&::after {
+		content: "";
+		right: 1rem;
+		top: 99%;
+		position: absolute;
+		border-top: 1rem solid red;
+		border-bottom: 1rem solid transparent;
+		border-left: 1rem solid transparent;
+		border-right: 1rem solid transparent;
+	}
+}
+.addAnswer:hover .annouce {
+	display: flex;
+}
+@keyframes appearing {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
