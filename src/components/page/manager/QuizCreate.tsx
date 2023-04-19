@@ -3,16 +3,13 @@ import "./style.scss";
 type Props = {};
 
 const QuizCreate: React.FC = (props: Props) => {
-	const [image, setImage] = useState<string>();
-	const [name, setName] = useState<string>("");
-	const nameRef = useRef<HTMLTextAreaElement>(null);
-	const fileRef = useRef<File>();
+	const contentRef = useRef<HTMLDivElement>(null);
+	const [content, setContent] = useState<string>("");
 
+	const [image, setImage] = useState<string>("");
+	const imageRef = useRef<File>();
 	//question
-	const [quesionImg, setQuesitionImg] = useState<string>();
-	const [correctAnswer, setCorrectAnswer] = useState<number>(0);
-	const fileQuestionRef = useRef<File>();
-	const nameQuestionRef = useRef<HTMLTextAreaElement>(null);
+
 	//end question
 	const handleGetFile = (
 		e: React.ChangeEvent<HTMLInputElement>,
@@ -23,11 +20,10 @@ const QuizCreate: React.FC = (props: Props) => {
 			const reader = new FileReader();
 			reader.onload = (event) => {
 				if (type === "quiz") {
-					fileRef.current = file;
-					setImage(event.target?.result?.toString());
-				} else {
-					fileQuestionRef.current = file;
-					setQuesitionImg(event.target?.result?.toString());
+					imageRef.current = file;
+					if (event.target?.result) {
+						setImage(event.target?.result?.toString());
+					}
 				}
 			};
 			reader.readAsDataURL(file);
@@ -45,11 +41,10 @@ const QuizCreate: React.FC = (props: Props) => {
 
 		reader.onload = (event) => {
 			if (type === "quiz") {
-				fileRef.current = file;
-				setImage(event.target?.result?.toString());
-			} else {
-				fileQuestionRef.current = file;
-				setQuesitionImg(event.target?.result?.toString());
+				imageRef.current = file;
+				if (event.target?.result) {
+					setImage(event.target?.result?.toString());
+				}
 			}
 		};
 
@@ -65,65 +60,54 @@ const QuizCreate: React.FC = (props: Props) => {
 		e.stopPropagation();
 	};
 
-	const handleTest = (): void => {
-		setName(nameRef.current?.value || "");
-	};
 	return (
 		<div className="quizCreate">
-			<div className="quizCreate__wrap">
-				<div className="quizCreate__title">
-					<i>Tạo mới</i>
-					<div className="quizCreate__times">&times;</div>
-				</div>
-				<div className="quizCreate__body">
-					<div className="quizCreate__body__1">
-						<div style={{ width: "100%" }} className="quizCard__admin">
-							<div className="quizCard__wrap">
-								<div className="quizCard__input">
-									<div>
-										<label
-											onDrop={(e) => handleDrop(e, "quiz")}
-											onDragOver={handleDragOver}
-											onDragEnter={handleDragEnter}
-											className="quizCard__label"
-											htmlFor="inputFileADmin"
-										></label>
-										<input
-											accept="image/*"
-											onChange={(e) => handleGetFile(e, "quiz")}
-											hidden
-											id="inputFileADmin"
-											type="file"
-										/>
-									</div>
-								</div>
-								<div
-									style={{ border: "0.1rem solid rgba(0, 0, 0, 0.4)" }}
-									className="quizCard__image"
+			<div className="quizCreateForm">
+				<div className="quizCreateForm__head">
+					<div className="quizCreateForm__head__1">
+						<div className="quizCraeteForm__head__1_img">
+							<img src={image} alt="anh" />
+							<div className="quizCraeteForm__head__1_items">
+								<label
+									onDrop={(e) => handleDrop(e, "quiz")}
+									onDragOver={handleDragOver}
+									onDragEnter={handleDragEnter}
+									htmlFor="image"
+									className={`${!image && "active"}`}
 								>
-									<img src={image} alt="Quiz Image" />
-								</div>
-								<div
-									style={{ borderTop: "0.1rem solid rgba(0, 0, 0, 0.1)" }}
-									className="quizCard__name"
-								>
-									<div className="quizCard__name-elips">
-										<i>{name}</i>
-									</div>
-								</div>
-							</div>
-							<div className="input__text">
-								<textarea ref={nameRef} placeholder="Enter Name of this quiz" />
-							</div>
-							<div className="input__create__button">
-								<button className="btn btn-default">Tạo mới</button>
-								<button onClick={handleTest} className="btn btn-default">
-									Test thử name
-								</button>
+									{!image && <i className="fa-regular fa-image"></i>}
+									{!image && <i>Hình Ảnh</i>}
+								</label>
+								<input
+									accept="image/*"
+									onChange={(e) => handleGetFile(e, "quiz")}
+									hidden
+									id="image"
+									type="file"
+								/>
 							</div>
 						</div>
 					</div>
-					<div className="quizCreate__body__2"></div>
+					<div
+						onClick={() => {
+							contentRef.current?.focus();
+						}}
+						className="quizCreateForm__head__2"
+					>
+						<div
+							onInput={(e) => {
+								const value = e.target as HTMLElement;
+								setContent(value.innerHTML);
+							}}
+							ref={contentRef}
+							contentEditable={true}
+						></div>
+						{!content && (
+							<div className="quizCreateForm__head__abs">
+								Nhập câu hỏi ở đây...
+							</div>
+						)}
+					</div>
 				</div>
 			</div>
 		</div>

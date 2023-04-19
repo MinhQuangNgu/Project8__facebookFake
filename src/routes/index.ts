@@ -4,6 +4,7 @@ import Register from "../components/page/auth/Register";
 import Draw from "../components/page/draw/Draw";
 import Friend from "../components/page/friend/Friend";
 import Home from "../components/page/home/Home";
+import QuizCreate from "../components/page/manager/QuizCreate";
 import QuizManager from "../components/page/manager/QuizManager";
 import Profile from "../components/page/profile/Profile";
 import Quiz from "../components/page/quiz/Quiz";
@@ -60,5 +61,9 @@ export const publicRouter: router[] = [
 	{
 		path: "/quiz/manager",
 		element: QuizManager,
+	},
+	{
+		path: "/quiz/manager/create",
+		element: QuizCreate,
 	},
 ];

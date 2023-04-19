@@ -22,10 +22,15 @@ const QuizManager: React.FC = (props: Props) => {
 					<i className="fa-solid fa-house"></i>
 				</div>
 				<div className="quizManager__title_button">
-					<button>Tạo mới</button>
+					<button
+						onClick={() => {
+							navigate("/quiz/manager/create");
+						}}
+					>
+						Tạo mới
+					</button>
 				</div>
 			</div>
-			<QuizCreate />
 		</div>
 	);
 };
