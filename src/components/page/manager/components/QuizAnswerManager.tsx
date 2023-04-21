@@ -1,14 +1,17 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
 interface answers {
-	image?: string;
+	image?: File;
 	content?: string;
+	url?: string;
 }
 type Props = {
 	item: answers;
 	index: number;
 	handleChangeContentAnswer: (content: string, index: number) => void;
 	handleRemoveContentAnswer: (index: number) => void;
+	setImageAddNumber: React.Dispatch<React.SetStateAction<number>>;
+	setImageShow: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const QuizAnswerManager: React.FC<Props> = ({
@@ -16,6 +19,8 @@ const QuizAnswerManager: React.FC<Props> = ({
 	index,
 	handleChangeContentAnswer,
 	handleRemoveContentAnswer,
+	setImageAddNumber,
+	setImageShow,
 }) => {
 	const contentAnswerRef = useRef<HTMLDivElement>(null);
 	const [content, setContent] = useState<string>("");
@@ -38,9 +43,25 @@ const QuizAnswerManager: React.FC<Props> = ({
 					>
 						<i className="fa-solid fa-trash"></i>
 					</div>
-					<div title="Thêm ảnh" className="quizCreateForm3__head__items">
+					<div
+						onClick={() => {
+							setImageAddNumber(index);
+						}}
+						title="Thêm ảnh"
+						className="quizCreateForm3__head__items"
+					>
 						<i className="fa-solid fa-image"></i>
 					</div>
+					{item?.url && (
+						<div
+							onClick={() => {
+								setImageShow(item?.url || "");
+							}}
+							className="quizCreateForm3__head__items"
+						>
+							<img src={item?.url} alt="anh" />
+						</div>
+					)}
 				</div>
 				<div
 					onClick={() => {

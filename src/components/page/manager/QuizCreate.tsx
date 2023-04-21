@@ -3,8 +3,9 @@ import "./style.scss";
 import QuizAnswerManager from "./components/QuizAnswerManager";
 type Props = {};
 interface answers {
-	image?: string;
+	image?: File;
 	content?: string;
+	url?: string;
 }
 const QuizCreate: React.FC = (props: Props) => {
 	//question
@@ -16,6 +17,8 @@ const QuizCreate: React.FC = (props: Props) => {
 
 	//answer
 	const [answer, setAnswer] = useState<answers[]>([{}, {}, {}, {}]);
+	const [imageAddNumber, setImageAddNumber] = useState<number>(-1);
+	const [imageShow, setImageShow] = useState<string>("");
 	//end answer
 	const handleGetFile = (
 		e: React.ChangeEvent<HTMLInputElement>,
@@ -30,6 +33,15 @@ const QuizCreate: React.FC = (props: Props) => {
 					if (event.target?.result) {
 						setImage(event.target?.result?.toString());
 					}
+				} else if (type === "question") {
+					const arr = answer;
+					arr[imageAddNumber] = {
+						...arr[imageAddNumber],
+						image: file,
+						url: event.target?.result?.toString(),
+					};
+					setAnswer([...arr]);
+					setImageAddNumber(-1);
 				}
 			};
 			reader.readAsDataURL(file);
@@ -51,6 +63,15 @@ const QuizCreate: React.FC = (props: Props) => {
 				if (event.target?.result) {
 					setImage(event.target?.result?.toString());
 				}
+			} else if (type === "question") {
+				const arr = answer;
+				arr[imageAddNumber] = {
+					...arr[imageAddNumber],
+					image: file,
+					url: event.target?.result?.toString(),
+				};
+				setAnswer([...arr]);
+				setImageAddNumber(-1);
 			}
 		};
 
@@ -156,6 +177,8 @@ const QuizCreate: React.FC = (props: Props) => {
 								key={index}
 								handleRemoveContentAnswer={handleRemoveContentAnswer}
 								index={index}
+								setImageAddNumber={setImageAddNumber}
+								setImageShow={setImageShow}
 							/>
 						))}
 						<div
@@ -174,6 +197,60 @@ const QuizCreate: React.FC = (props: Props) => {
 					</div>
 				</div>
 			</div>
+			{imageAddNumber !== -1 && (
+				<div
+					onClick={() => {
+						setImageAddNumber(-1);
+					}}
+					className="quizAnswer__img__abs"
+				></div>
+			)}
+			{imageAddNumber !== -1 && (
+				<div className="quizAnswer__img--add">
+					<div className="quizAnswer__img--add__title">
+						Thêm ảnh
+						<div
+							onClick={() => {
+								setImageAddNumber(-1);
+							}}
+						>
+							&times;
+						</div>
+					</div>
+					<div className="quizAnswer__img--add__input">
+						<label
+							onDrop={(e) => handleDrop(e, "question")}
+							onDragOver={handleDragOver}
+							onDragEnter={handleDragEnter}
+							htmlFor="quizAnswer__img"
+						>
+							Nhấn vào đây hoặc kéo ảnh vào đây
+						</label>
+						<input
+							accept="image/*"
+							onChange={(e) => handleGetFile(e, "question")}
+							hidden
+							id="quizAnswer__img"
+							type="file"
+						/>
+					</div>
+				</div>
+			)}
+			{imageShow && (
+				<div
+					onClick={() => {
+						setImageShow("");
+					}}
+					className="quizImage--abs__close"
+				>
+					<div>&times;</div>
+				</div>
+			)}
+			{imageShow && (
+				<div className="quizImage--abs">
+					<img src={imageShow} alt="Ảnh" />
+				</div>
+			)}
 		</div>
 	);
 };

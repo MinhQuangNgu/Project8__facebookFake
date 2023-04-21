@@ -185,6 +185,12 @@
 	font-size: 1.5rem;
 	border-radius: 0.5rem;
 	cursor: pointer;
+	& > img {
+		width: 100%;
+		height: 100%;
+		border-radius: 0.5rem;
+		object-fit: cover;
+	}
 }
 .quizCreateForm3__body {
 	width: 90%;
@@ -276,5 +282,104 @@
 	}
 	100% {
 		opacity: 1;
+	}
+}
+.quizAnswer__img__abs {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 9;
+}
+.quizAnswer__img--add {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 40%;
+	background-color: white;
+	z-index: 10;
+	border-radius: 1rem;
+	box-shadow: 0 0 0.5rem 0.1rem white;
+	padding: 1rem;
+	&__title {
+		text-align: center;
+		font-size: 3rem;
+		font-weight: 600;
+		position: relative;
+		& > div {
+			position: absolute;
+			right: 0;
+			top: 0rem;
+			width: 3rem;
+			height: 3rem;
+			border: 0.1rem solid rgba(0, 0, 0, 0.3);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 50%;
+			padding-bottom: 0.6rem;
+			cursor: pointer;
+		}
+	}
+	&__input {
+		width: 100%;
+		height: 40vh;
+		margin-top: 2rem;
+		border: 0.1rem solid rgba(0, 0, 0, 0.3);
+		font-size: 1.9rem;
+		border-radius: 1rem;
+		& > label {
+			cursor: pointer;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}
+.quizImage--abs {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+	width: 60%;
+	max-height: 80vh;
+	background-color: white;
+	& > img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+.quizImage--abs__close {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: 9;
+	display: flex;
+	justify-content: flex-end;
+	& > div {
+		width: 4rem;
+		height: 4rem;
+		border: 0.1rem solid white;
+		display: flex;
+		margin-top: 1.5rem;
+		margin-right: 1.5rem;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 3rem;
+		color: white;
+		padding-bottom: 0.5rem;
+		cursor: pointer;
 	}
 }
