@@ -59,6 +59,14 @@ const QuizManagerCard: React.FC<Props> = ({ index }) => {
 						</div>
 					</div>
 					<div className="quizManger__detail__2__card__abs">{index}</div>
+					<div className="question__edit">
+						<div className="question__edit_btn">
+							<button className="btn btn-default button__edit_second">
+								Xóa
+							</button>
+							<button className="btn btn-default button__edit">Cập nhật</button>
+						</div>
+					</div>
 				</div>
 			)}
 		</Draggable>
