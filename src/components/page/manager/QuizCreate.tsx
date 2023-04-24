@@ -2,6 +2,7 @@ import React, { useRef, useState, useCallback, useEffect } from "react";
 import "./style.scss";
 import QuizAnswerManager from "./components/QuizAnswerManager";
 import { useNavigate } from "react-router-dom";
+import ListQuestionManager from "./components/ListQuestionManager";
 type Props = {};
 interface answers {
 	image?: File;
@@ -12,6 +13,7 @@ const QuizCreate: React.FC = (props: Props) => {
 	//other
 	const navigate = useNavigate();
 	const [select, setSelect] = useState<boolean>(false);
+	const [list, setList] = useState<boolean>(false);
 
 	//end other
 	//question
@@ -128,7 +130,14 @@ const QuizCreate: React.FC = (props: Props) => {
 	return (
 		<div className="quizCreate">
 			<div className="quizCreate__title">
-				<div className="quizCreate__title__items">Danh sách câu hỏi</div>
+				<div
+					onClick={() => {
+						setList(true);
+					}}
+					className="quizCreate__title__items"
+				>
+					Danh sách câu hỏi
+				</div>
 				<div
 					onClick={() => {
 						navigate(-1);
@@ -378,6 +387,17 @@ const QuizCreate: React.FC = (props: Props) => {
 					<i className="fa-solid fa-floppy-disk"></i> Lưu
 				</button>
 			</div>
+			{list && (
+				<div
+					onClick={() => {
+						setList(false);
+					}}
+					className="quizImage--abs__close"
+				>
+					<div>&times;</div>
+				</div>
+			)}
+			{list && <ListQuestionManager />}
 		</div>
 	);
 };
